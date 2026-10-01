@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4545f940-f2eb-40e2-ade9-e679a72ac802" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changelog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/changelog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/prime_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/prime_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read.md" beforeDir="false" afterPath="$PROJECT_DIR$/read.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/report_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/report_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/slot_report_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/slot_report_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/pages/machine_slot_yield_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/pages/machine_slot_yield_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/pages/report_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/pages/report_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/report_detail_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/report_detail_dialog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/widgets/machine_slot_summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/widgets/machine_slot_summary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/widgets/slot_report_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/widgets/slot_report_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/alarm_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/alarm_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/database_init_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/database_init_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/filter_option_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/filter_option_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/report_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/report_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/slot_report_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/slot_report_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/slot_summary_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/slot_summary_worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/summary_worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/summary_worker.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0293949563381686" />
+      <entry key="MS500" value="1.7942124099359646" />
+      <entry key="S2" value="5.480600119966616" />
+      <entry key="S5" value="11.18736229673548" />
+      <entry key="S10" value="16.01940611120456" />
+      <entry key="S30" value="22.300670396721838" />
+      <entry key="S60" value="24.806364355411212" />
+      <entry key="M2" value="26.30596576382799" />
+      <entry key="M5" value="27.724025786303013" />
+      <entry key="M10" value="29.609836147681673" />
+      <entry key="M15" value="31.026556873447753" />
+      <entry key="M30" value="33.301367490944045" />
+      <entry key="H1" value="34.92504643149708" />
+      <entry key="H2" value="35.89875355299504" />
+      <entry key="H4" value="36.432409101674224" />
+      <entry key="D1" value="36.90295248443244" />
+      <entry key="W1" value="36.9860748497653" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.8712877067767991" />
+      <entry key="MS500" value="1.7245211152749678" />
+      <entry key="S2" value="5.398092645262841" />
+      <entry key="S5" value="11.108642696035774" />
+      <entry key="S10" value="15.935853623210068" />
+      <entry key="S30" value="22.224557630426574" />
+      <entry key="S60" value="24.75395410089467" />
+      <entry key="M2" value="26.27495338061636" />
+      <entry key="M5" value="27.710219190875762" />
+      <entry key="M10" value="29.602597806238574" />
+      <entry key="M15" value="31.021624040072695" />
+      <entry key="M30" value="33.29882988167277" />
+      <entry key="H1" value="34.92375487297792" />
+      <entry key="H2" value="35.89810126151541" />
+      <entry key="H4" value="36.43208120882931" />
+      <entry key="D1" value="36.902897582021716" />
+      <entry key="W1" value="36.98606700020424" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3JEWPEeaDcqJG8k2fPNNVRTv0OG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests in test_alarm.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_daily_gui.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_daily_summary.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_file_management.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_filters.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_gui.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_slot_tab_refresh.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auto_import_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.auto_import_today_main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mail_template_dialog.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Python Project/LI_App_v1.5-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-c59985aa861c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.24374.152" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4545f940-f2eb-40e2-ade9-e679a72ac802" name="Changes" comment="" />
+      <created>1789226683295</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1789226683295</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

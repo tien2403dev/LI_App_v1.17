@@ -1,0 +1,10 @@
+# GUI
+PyQt5==5.15.11
+# CUM Excel reader (loaded only when importing CUM)
+openpyxl>=3.1,<4
+
+# Summary chart (loaded on first SEARCH)
+matplotlib>=3.9,<4
+
+# Test Login (loaded inside worker on button click)
+requests>=2.31,<3

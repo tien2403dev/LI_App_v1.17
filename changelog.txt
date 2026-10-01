@@ -1,0 +1,498 @@
+CHANGE LOG — LI APP
+
+Cập nhật từ LI_APP(5).zip
+
+- Loại bỏ file chạy Import PRIME bằng dòng lệnh không cần thiết cho giao diện.
+- Giữ Import PRIME và Import CUM hoạt động qua các nút trong ứng dụng.
+- Tách log tiến độ thông thường và log cảnh báo/lỗi để dễ nhận biết trên terminal.
+- Cập nhật tài liệu chạy ứng dụng và hướng dẫn thay thế project.
+- Bổ sung file change log.txt ghi tổng quan nội dung thay đổi trong mỗi lần bàn giao code.
+
+[2026-09-13 21:30:28]  CHANGE LOG – BỘ LỌC LI
+
+- Thêm giao diện bộ lọc theo Aging: From, To, EQP, SLOT, Tier, Model và Scrap Code.
+- Giữ hai nút IMPORT PRIME, IMPORT CUM; bổ sung nút SEARCH phát bộ điều kiện đã chọn.
+- Lấy lựa chọn từ database LI, tự nạp lại sau khởi tạo và import bằng worker.
+- Giữ checkbox, Select All và cách đánh dấu mã Scrap Code ưu tiên của Aging.
+- Bổ sung kiểm thử bộ lọc và cập nhật kiểm thử giao diện.
+
+
+[2026-09-13 22:24:28] CHANGE LOG — CUM YIELD LI SUMMARY (UTC+7)
+
+- Thêm tab Summary với bảng CUM bên trái và biểu đồ bên phải theo Aging.
+- Tổng hợp In/Out, Fail Qty, Fail PPM, Yield và Total từ cum_data theo công thức Aging.
+- Nối SEARCH với bộ lọc ngày, Tier, Model; giữ phạm vi Summary toàn bộ máy như Aging.
+- Thêm worker đọc dữ liệu, cache kết quả và làm mới sau import; xử lý trạng thái rỗng/lỗi.
+- Bổ sung Matplotlib và kiểm thử chức năng Summary.
+- Giữ nội dung read.md cũ; chuyển toàn bộ lịch sử change log.txt sang changelog.txt, nối mục mới kèm ngày giờ Việt Nam.
+
+
+[2026-09-13 22:48:31] CHANGE LOG — SỬA MODEL FILTER CHO CUM (UTC+7)
+
+- Sửa danh sách Model lấy từ cả prime_data và cum_data, loại trùng, để chọn được Model chỉ có trong CUM.
+- Khắc phục Summary rỗng do Model của CUM không xuất hiện trong bộ lọc.
+- Cập nhật kiểm thử trường hợp PRIME rỗng nhưng CUM có dữ liệu; giữ công thức Summary hiện tại.
+- Nối hướng dẫn và nhật ký mới vào nội dung cũ, kèm ngày giờ Việt Nam.
+
+
+[2026-09-13 22:56:57] CHANGE LOG — ĐÓNG APP MỘT LẦN CLICK (UTC+7)
+
+- Sửa lỗi phải bấm Close hai lần khi app rảnh.
+- Chuyển yêu cầu đóng sang lượt xử lý sự kiện Qt tiếp theo, tránh gọi đóng lồng nhau.
+- Giữ cơ chế đợi worker kết thúc an toàn và tự đóng sau một lần bấm.
+- Bổ sung kiểm thử tái hiện lỗi; toàn bộ 10 kiểm thử thành công.
+
+
+[2026-09-13 23:23:59] CHANGE LOG — TỐI ƯU INDEX VÀ LOADING DIALOG (UTC+7)
+
+- Kiểm tra lại index hiện có theo các truy vấn import, filter option, sync Tier và CUM Summary.
+- Bổ sung các index còn thiếu cho SLOT, MODEL, TIER/MODEL, SCRAPCODE và Summary CUM theo TIER/MODEL/DATE/EQPID.
+- Tự tạo index còn thiếu khi mở database schema 2 cũ, không yêu cầu xóa hoặc tạo lại database.
+- Thêm LoadingDialog giống Aging và dùng cho SEARCH, Import PRIME, Import CUM.
+- Bỏ chữ “đang tải...” trên tiêu đề Summary, để trạng thái chạy nền hiển thị bằng dialog.
+- Cập nhật read.md theo từng chức năng kèm file liên quan; bổ sung kiểm thử index.
+- Toàn bộ 11 kiểm thử thành công.
+
+[2026-09-14 10:43:59]CẬP NHẬT LI DAILY YIELD
+
+- Thêm bảng Cum Yield và Prime Yield theo từng ngày, từng EQP và Scrap Code PPM.
+- Thêm biểu đồ cột chồng Scrap PPM kết hợp đường Yield theo thiết kế Aging.
+- Tối ưu truy vấn, bổ sung index cho mã lỗi PRIME và cache khi đổi Scrap Code.
+- Nạp thư viện vẽ khi SEARCH sau khi cửa sổ đã mở; giữ loading trong lúc hiển thị kết quả.
+- Tự bổ sung index vào database hiện tại, không yêu cầu xóa database.
+- Bổ sung kiểm thử và hướng dẫn các file liên quan theo từng chức năng.
+
+
+[2026-09-14 14:14:42] CHANGE LOG — PRIME DAILY CHỈ TÍNH TEST_COUNT = 1 (UTC+7)
+
+- Chỉ lấy TEST_COUNT = 1 khi tính In/Pass/Fail, Yield và Scrap Code PPM của Prime Yield LI Daily.
+- Bảng và biểu đồ Prime Daily cùng sử dụng dữ liệu lần test đầu tiên.
+- Giữ dữ liệu test lại trong database và giữ nguyên thống kê CUM.
+- Nối nội dung mới vào read.md và changelog.txt, giữ toàn bộ lịch sử cũ.
+
+
+[2026-09-14 14:37:40] CHANGE LOG — PRIME YIELD SLOT 1–48 (UTC+7)
+
+- Thêm tab Yield Slot: thống kê In, PASS, Prime FAIL, Prime Yield và Fail PPM theo khoảng ngày/EQP/Tier/Model, chỉ tính TEST_COUNT = 1.
+- Hiển thị đủ 48 slot và biểu đồ số lượng Prime FAIL ngay dưới bảng.
+- SEARCH chỉ xử lý tab hiện tại, cache riêng từng tab, chạy SQL nền và dùng loading hiện có.
+- Nạp thư viện biểu đồ khi SEARCH; bổ sung partial index tự động cho database cũ và mới.
+- Bổ sung kiểm thử công thức, index, cache, xử lý lỗi và tab đang mở.
+- Nối tài liệu và nhật ký vào cuối nội dung cũ; chỉ bàn giao file mới/sửa.
+
+
+
+[2026-09-14 17:17:24] CHANGE LOG — GIAO DIỆN SLOT VÀ TỰ TẢI KHI CHUYỂN TAB (UTC+7)
+
+- Thêm nền lưới/khung biểu đồ Slot Fail Prime, bỏ vạch tick và đưa đỉnh trục Y về đúng số Fail lớn nhất.
+- Bỏ dòng “Áp dụng...”, thêm ô Slot nền xanh và thu gọn chiều rộng cột đủ hiển thị PPM.
+- Chuyển tab tự hiển thị theo bộ lọc đang chọn, kể cả thay đổi chưa bấm SEARCH; giữ worker nền và cache riêng từng tab.
+- Giữ nguyên phép tính, lọc TEST_COUNT = 1, index và database.
+- Bổ sung kiểm thử; nối read.md/changelog.txt vào nội dung cũ và chỉ bàn giao file thay đổi.
+
+[2026-09-14 18:06:07 UTC+07:00]
+- Thêm bảng và biểu đồ Daily Prime Yield cho EQP/SLOT được chọn, nằm dưới Slot Fail Prime.
+- Chỉ lấy TEST_COUNT=1; Total Yield tính tổng Output/tổng Input, xử lý ngày không có dữ liệu.
+- Bổ sung partial index EQP/SLOT/DATE, giữ worker nền/lazy import; cache Yield Slot có SLOT.
+- Bảng và chart nằm ngang, chart cùng kích thước Summary; kiểm thử truy vấn, dữ liệu và GUI.
+- read.md nối hướng dẫn, cơ chế tối ưu và danh sách file liên quan; giữ toàn bộ lịch sử cũ.\
+
+
+[2026-09-15 09:31:00 (UTC+07:00)] Cum Yield by Model
+- Thêm bảng thống kê CUM theo Model, tự sinh tất cả cột scrapcode và dòng Total tổng scrap của các Model.
+- Thêm Copy All/Ctrl+C/chuột phải để copy cả bảng sang Excel.
+- Thêm biểu đồ cột chồng scrap và đường Yield ngay dưới bảng; Scrap Code chỉ lọc biểu đồ.
+- Tích hợp bộ lọc Date/EQP/Tier/Model, worker/loading, cache và tự cập nhật khi quay lại Summary.
+- Tối ưu bằng 2 truy vấn tổng hợp, index hiện có, QAbstractTableModel và lazy import biểu đồ.
+- Bổ sung kiểm thử và nối tiếp hướng dẫn vào read.md; chỉ bàn giao file thêm/sửa.
+
+[2026-09-15 10:11:45 (UTC+07:00)] Điều chỉnh Cum Yield by Model
+- Chuyển bảng và biểu đồ xuống cuối tab Yield Slot.
+- Chỉ hiển thị legend của mã được chọn có số lượng phát sinh thực tế.
+- Đồng bộ bảng màu, tối đa 15 legend/hàng và kích thước 1550x550 với Cum Daily LI; bỏ in đậm chart title.
+- Co cột bảng theo mã lỗi/số lượng; khung bảng mở hết chiều ngang tab; giữ Copy All.
+- Giữ lọc/cache/lazy import; đổi SLOT không truy vấn lại CUM, không chọn EQP vẫn xem CUM tất cả máy.
+- Cập nhật kiểm thử và nối tiếp read.md; chỉ bàn giao file chỉnh sửa.
+
+
+
+[2026-09-15 10:54:25 (UTC+07:00)] Cum Yield by Model — bỏ lọc EQP/Model
+- Bảng chỉ phụ thuộc From, To, Tier; luôn thống kê tất cả EQP và Model.
+- Scrap Code vẫn chỉ điều khiển các mã có dữ liệu trên biểu đồ; Total/Copy All giữ nguyên.
+- Cache CUM độc lập EQP/Model/SLOT, thêm index phù hợp Tier/Date cho database hiện có.
+- Giữ bộ lọc/cách tính của các bảng khác; cập nhật kiểm thử và nối tiếp read.md.
+
+[2026-09-15 11:10:24 (UTC+07:00)] File Management giống Aging
+- Thêm hai danh sách PRIME/CUM theo Month, Date, Load time; lọc tháng/ngày và chọn ngày xuất PRIME.
+- Thêm xuất Excel streaming bằng worker/loading, chia sheet tự động; giữ tất cả Test Count.
+- Thêm khối Auto Import Prime Log và bảng cấu hình cho DB hiện có, không xóa dữ liệu.
+- Thêm auto_import_main.py dùng Task Scheduler import hôm qua theo giờ lưu, parser/khóa/staging LI.
+- Tải tab độc lập bộ lọc thống kê, làm mới khi quay lại/sau import và đóng cửa sổ an toàn.
+- Kiểm thử chức năng mới; nối tiếp read.md, chỉ bàn giao file thêm/sửa.
+
+[2026-09-15 11:20:49 (UTC+07:00)] Sửa File Management ẩn bộ lọc
+- Giữ bộ lọc và khoảng cách bố cục giống các tab khác khi mở File Management.
+- Bỏ logic ẩn bộ lọc và cho tab chiếm vùng phía trên.
+- Cập nhật kiểm tra giao diện; 4 kiểm thử File Management đạt.
+- Nối tiếp read.md/changelog.txt, chỉ bàn giao file sửa.
+
+[2026-09-15 12:47:53 (UTC+07:00)] Auto Import bỏ qua ngày chưa có file
+- Chuyển riêng trường hợp ngày cần import không có file .txt thành trạng thái SKIPPED, không ghi ERROR/TRACEBACK.
+- Giữ nguyên last_import_date để tác vụ tự kiểm tra lại khi file được bổ sung sau đó.
+- Các lỗi truy cập, dữ liệu, cấu trúc file và database vẫn báo lỗi như trước.
+- Không thay đổi hành vi Import PRIME thủ công hoặc các chức năng khác.
+- Bổ sung kiểm thử và nối tiếp read.md/changelog.txt.
+
+[2026-09-15 13:12:28 (UTC+07:00)] Auto Import PRIME ngày hiện tại
+- Thêm auto_import_today_main.py để Task Scheduler import lại log ngày hiện tại mỗi lần chạy.
+- Dùng PrimeImportService hiện có để staging, xóa dữ liệu ngày cũ và ghi toàn bộ dữ liệu mới trong transaction; không thay logic nút Import PRIME.
+- Không dùng hoặc cập nhật last_import_date, cho phép chạy lặp và vẫn để task hôm qua chốt dữ liệu ngày kế tiếp.
+- Ghi chung auto_import_log.txt, thêm nhãn TODAY; thiếu file ghi SKIPPED và không xóa dữ liệu hiện có.
+- Dùng chung cấu hình Enable/Import Time/Log Folder và khóa import của LI.
+- Thêm 2 kiểm thử Today; nối tiếp read.md/changelog.txt; chỉ bàn giao file thêm/sửa.
+
+[2026-09-15 14:47:10 (UTC+07:00)] Thiết kế tab Send Mail giống Aging
+- Thêm giao diện Sender, Receiver/CC, Auto Send Mail, Test Login và MAIL HISTORY cùng các hộp thoại tương ứng.
+- Quản lý thêm/xóa, chỉ một Sender Enable, đổi loại Receiver/CC/None và lưu giờ gửi trong database LI.
+- Bổ sung bảng mail cho DB hiện tại, giữ nguyên dữ liệu PRIME/CUM; không cần tạo lại database.
+- Test Login chạy nền, lazy import requests; chờ worker kết thúc an toàn khi đóng app.
+- Tạm khóa Customize Email; chưa triển khai gửi mail thủ công/tự động. Auto Send Mail chỉ lưu cấu hình.
+- Kiểm tra DB, thao tác cấu hình, hiển thị Qt và vòng đời login bằng phản hồi mô phỏng; chưa kết nối thật hệ thống mail nội bộ.
+- Nối tiếp read.md/changelog.txt; chỉ bàn giao các file thêm/sửa.
+
+
+[2026-09-16 13:52:12 (UTC+07:00)] Thêm tab Machine Slot Yield và cấu hình Alarm
+- Thêm tab `Machine Slot Yield` sau tab Yield Slot, bố cục theo ảnh Aging: Log Folder, Target 15, Target 30 và nút Save Target.
+- Thêm ô `Continuous Fail` cạnh Target 30 để chỉnh số lần FAIL liên tục; mặc định là 3.
+- Target 15 mặc định 70.00%, Target 30 mặc định 75.00%; cả hai cho phép nhập từ 0 đến 100%.
+- Thêm bảng singleton `machine_slot_yield_config` vào SQLite để lưu Log Folder, hai Target, Continuous Fail và thời điểm cập nhật.
+- Nút Save Target cập nhật toàn bộ cấu hình trong một transaction `BEGIN IMMEDIATE`; dữ liệu được đọc lại khi mở app/tab lần sau.
+- Nếu Log Folder của tab chưa được lưu, giao diện lấy giá trị hiện có từ cấu hình Auto Import để tránh người dùng nhập lại.
+- Không thay đổi schema version 2, dữ liệu PRIME/CUM, thống kê, import hoặc Send Mail; chưa triển khai logic tạo Alarm ở lần cập nhật này.
+- Thêm kiểm thử cho cấu hình mặc định, lưu/đọc lại, khởi tạo lặp không mất dữ liệu và lazy-load tab.
+
+
+[2026-09-16 15:50:48 (UTC+07:00)] Triển khai tab Alarm LI
+- Thêm bảng Alarm 23 cột, lọc theo cột, ba trạng thái có màu và tự ghi thời điểm hoàn thành; cho nhập kết quả kiểm tra/xử lý/theo dõi.
+- Tự tạo Alarm sau import PRIME với cả ba quy tắc cấu hình, lấy mọi test count, nối lịch sử xuyên ngày; Yield 15/30 cùng Model, bỏ qua Model khác và lấy cửa sổ vi phạm đầu tiên từ mới về cũ.
+- Mỗi ngày/máy/slot tối đa một alarm; gộp Fail comment, ưu tiên cặp thời gian quy tắc 1 -> 2 -> 3.
+- Import lại: giữ nguyên toàn bộ alarm còn vi phạm, xóa alarm không còn vi phạm, tạo alarm chưa có. Thực hiện cùng transaction PRIME để rollback an toàn.
+- Bảo vệ kết quả người dùng bằng version khi sửa, báo database bận/xung đột; hỗ trợ Search/chuyển tab/đóng app qua worker.
+- Tự bổ sung schema không xóa DB; tận dụng index hiện có và giữ lazy load. Áp dụng cho import tay, auto hôm qua và auto hôm nay qua luồng dùng chung.
+- Nối hướng dẫn và danh sách file trong read.md. 20/20 kiểm thử trọng tâm đạt; đã xác nhận một kiểm thử độ rộng cột Yield Slot thất bại sẵn trên bản gốc.
+
+
+[2026-09-16 17:47:56 (UTC+07:00)] Sửa cập nhật Alarm khi import lại
+- Alarm vẫn vi phạm: cập nhật kết quả tự tính đến Model và Target mới; giữ nguyên Status, Date complete và mọi trường người dùng phía sau.
+- Cập nhật bằng chứng/row_version; giữ ID và thời điểm tạo. Alarm hết vi phạm vẫn xóa, alarm mới vẫn tạo.
+- Kiểm tra 15 test và bản sao dữ liệu thực: 14 alarm bảo toàn các trường xử lý; slot 47 hiển thị Yield 30=66.67%, Target 30=70%.
+- File sửa: repositories/alarm_repository.py, tests/test_alarm.py, read.md, changelog.txt.
+
+
+
+[2026-09-16 18:41:52 (UTC+07:00)] Customize Email — Alarm LI hôm nay và hôm qua
+- Kích hoạt nút Customize Email; thêm cửa sổ Subject/Heading/Body Preview/Closing theo Aging.
+- Preview theo Alarm Date hôm nay + hôm qua, ghi rõ ngày, EQP/Slot và loại alarm; bỏ Chamber, giữ Model.
+- Hiển thị chi tiết FAIL liên tiếp và bốn cột Yield 15/Target 15/Yield 30/Target 30 theo cửa sổ bằng chứng.
+- Lưu mẫu vào mail_template; đọc preview ở QThread, bảo vệ đóng cửa sổ khi đang tải.
+- Giữ nguyên logic tạo/cập nhật alarm và trường theo dõi; chưa triển khai gửi mail.
+- Kiểm thử SQLite/HTML và biên dịch thành công; chưa chạy GUI do thiếu PyQt5 trong môi trường kiểm tra.
+
+
+
+[2026-09-17 09:53:35 (UTC+07:00)] Auto Send Mail LI — Task Scheduler
+- Thêm file chạy độc lập, kiểm tra Enable/giờ gửi và alarm hôm nay + 3 ngày trước giống Aging.
+- Chống trùng theo Alarm Date/EQP/Slot; khóa gửi đồng thời; gộp mail, dùng mẫu LI đã lưu và cấu hình Sender/Receiver/CC.
+- Bổ sung transport gửi mail nội bộ, lưu snapshot Mail History và slot đã gửi trong cùng transaction khi thành công.
+- Tự bổ sung bảng DB, không xóa dữ liệu; ghi log nối tiếp và mã thoát cho Task Scheduler.
+- Thêm spec build EXE riêng, cập nhật thông báo Auto Send Mail và nối hướng dẫn read.md.
+- Đạt 11 kiểm thử SQLite/job/CLI và kiểm tra transport giả lập; chưa gửi mail thật hoặc build EXE Windows.
+- File thêm: auto_send_mail_main.py, services/mail_send_job_service.py, Auto_Send_Mail.spec.
+- File sửa: services/mail_service.py, repositories/mail_send_repository.py, database/mail_schema.py, ui/widgets/auto_send_mail_scheduler_panel.py, read.md, changelog.txt.
+
+[2026-09-17 11:06:47 (UTC+07:00)] Điều chỉnh mẫu email alarm LI
+- Ẩn ngày không có alarm; đổi tên alarm hiệu suất 15/30 lần theo yêu cầu.
+- Bỏ cột Quy tắc và Lot ID trong bảng Yield; giữ Model và bốn cột Yield/Target.
+- Áp dụng cả preview và mail tự động, không thay đổi logic nghiệp vụ.
+- File sửa: services/mail_content_builder.py, read.md, changelog.txt.
+
+
+[2026-09-17 11:23:03 (UTC+07:00)] Export danh sách Alarm đang hiển thị ra Excel
+- Thêm nút Export Excel trong tab Alarm theo giao diện Aging.
+- Chỉ xuất các dòng còn hiển thị sau bộ lọc cột, đủ 23 cột và đánh lại No theo bảng.
+- Ghi Excel bằng worker nền; lazy-load openpyxl; có Auto Filter, freeze header và định dạng cột.
+- Khóa nút đúng trạng thái loading/export/bảng rỗng và thông báo kết quả.
+- Giữ chuỗi bắt đầu bằng dấu bằng ở dạng text.
+- File sửa: ui/pages/alarm_page.py, read.md, changelog.txt.
+
+
+[2026-09-17 11:29:03 (UTC+07:00)] Điều chỉnh hiển thị cột tab Alarm
+- Ẩn Yield 15 và Yield 30 khỏi bảng, không xóa dữ liệu database.
+- Thu hẹp Start/End time, Target 15/30, Model và Status.
+- Căn giữa toàn bộ nội dung bảng Alarm.
+- Export Excel bỏ hai cột Yield đang ẩn và căn giữa dữ liệu.
+- File sửa: ui/pages/alarm_page.py, read.md, changelog.txt.
+
+
+[2026-09-17 12:37:55 (UTC+07:00)] Đổi cột Yield/Target hiển thị trong tab Alarm
+- Hiện lại Yield 15 và Yield 30.
+- Ẩn Target 15 và Target 30; vẫn giữ dữ liệu trong database/email.
+- Export Excel có Yield và bỏ Target theo đúng bảng đang hiển thị.
+- File sửa: ui/pages/alarm_page.py, read.md, changelog.txt.
+
+
+[2026-09-17 12:46:18 (UTC+07:00)] Quick/Cal PASS-FAIL và khóa Monitor
+- Quick check result và Cal check result chuyển thành combobox chỉ có PASS/FAIL, không cho gõ chữ.
+- PASS nền xanh, FAIL nền đỏ; repository từ chối giá trị ngoài danh sách.
+- Monitor day 1/2/3 thu hẹp còn 115 px và chuyển thành chỉ đọc; dữ liệu cũ vẫn được giữ.
+- Đạt 15 kiểm thử nghiệp vụ Alarm và biên dịch Python thành công.
+- File sửa: domain/alarm.py, repositories/alarm_repository.py, ui/pages/alarm_page.py, read.md, changelog.txt.
+
+
+[2026-09-17 13:00:00 (UTC+07:00)] Launcher tự cập nhật LI Yield
+- Thêm Launcher kiểm tra `package/version.txt`, chỉ tải lại khi version thay đổi hoặc package local bị thiếu.
+- Copy package xuống `%LOCALAPPDATA%\\LI_Yield\\App` qua `App.new`, kiểm tra đầy đủ rồi mới thay bản hiện tại; tự khôi phục bản cũ nếu kích hoạt thất bại.
+- Chạy `LI_Yield.exe` từ máy local và truyền `LI_DB_PATH` trỏ về `database/li_app.db` cạnh Launcher trên server.
+- Không sử dụng `allow_create_database.flag`; nếu database dùng chung không tồn tại thì báo lỗi và không tạo nhầm database rỗng.
+- Chặn hai Launcher cập nhật đồng thời và không cập nhật khi LI Yield đang chạy; log tại `%LOCALAPPDATA%\\LI_Yield\\logs\\launcher.log`.
+- Đổi tên hiển thị ứng dụng thành `LI Yield`; thêm spec build app, spec build Launcher và file version mẫu.
+- File thêm: launcher_main.py, LI_Yield.spec, LI_Yield_Launcher.spec, version.txt.
+- File sửa: config/paths.py, main.py, ui/main_window.py, read.md, changelog.txt.
+
+
+[2026-09-17] GIỮ TEST_COUNT GỐC VÀ BỎ QUA LOT — dựa trên LIApp (19).zip
+- Reader nhận TEST_COUNT>=0, không cộng 1; schema chính/staging nhận 0.
+- Đổi 4 truy vấn lọc lần đầu từ TEST_COUNT=1 sang 0 trong daily/slot repository.
+- Đổi 2 partial index tương ứng trong cả danh sách tạo mới và bổ sung index.
+- Không sửa truy vấn không lọc TEST_COUNT; không sửa alarm hoặc công thức thống kê.
+- Prune thư mục LOT ở mọi cấp trước khi duyệt, không phân biệt hoa/thường.
+- Áp dụng trên database tạo mới sau khi thay source, không tự migration/xóa DB.
+- Cập nhật 3 test thống kê; thêm test_tcp_import.py. 22 kiểm thử đạt.
+- Import log thực: 5495 dòng, giữ 5430 count=0 và 65 count=1; import lại không trùng.
+
+
+
+[2026-09-17] Slot Fail History — bổ sung trên LIApp (20)
+- Click cột máy của Alarm mở lịch sử EQP/Slot, không có Chamber; cột sửa tay/monitor không mở popup.
+- Tám cột: Date, Time, Model, Lot ID, Result, Scrapcode, Test count, Fail qty (QTY).
+- Dropdown cho từng quy tắc/đoạn; Yield hiển thị đủ PASS/FAIL của 15/30 test.
+- Rule liên tiếp lưu N test mới nhất kết thúc ở End time của đoạn alarm; chú thích nếu đoạn gốc dài hơn N. Không đổi engine phát hiện hoặc thời gian alarm hiện có.
+- Lưu snapshot PRIME với id/SERIAL/QTY trong transaction import; giữ nguyên TEST_COUNT kể cả 0.
+- Tải danh sách không kéo evidence_json; click đọc đúng một ID, kiểm tra row_version; chạy QThread.
+- Bổ sung idx_alarm_history_list; tái sử dụng idx_prime_slot_time cho đối chiếu alarm cũ, không tạo index PRIME thừa.
+- Alarm cũ được đối chiếu theo bằng chứng đã lưu; thiếu dữ liệu báo cần import lại, không chọn chuỗi khác.
+- 12/12 test mới đạt, kiểm tra query plan và Qt offscreen. Ba test cũ lỗi giống bản gốc được ghi rõ trong read.md.
+- read.md giữ nội dung cũ và thêm hướng dẫn cài đặt, thiết kế, ánh xạ cột, giới hạn tương thích, index, danh sách file và kết quả kiểm tra.
+
+
+[2026-09-17] MACHINE SLOT YIELD — FAIL KHÁC SCRAP CODE + RECOVERY 6/10
+
+- Đổi nhãn ngưỡng cũ thành “Số lần fail liên tục cùng scrapcode”, giữ giá trị cũ.
+- Thêm ngưỡng “Số lần fail liên tục khác Scrap code”, mặc định 3, tối thiểu 2.
+- Thêm cột config different_scrap_fail_count và cột alarm
+  different_scrap_fail_count_used; tự migration DB cũ, không xóa dữ liệu.
+- Quy tắc mới: N FAIL liên tục cùng EQP/Slot/Model, có >=2 Scrap code khác nhau.
+  Lưu snapshot, hỗ trợ popup lịch sử và nội dung mail.
+- Yield 15: bỏ qua nếu 6 test mới nhất của slot đều PASS.
+- Yield 30: bỏ qua nếu 10 test mới nhất của slot đều PASS.
+- Nhóm gần nhất xét toàn slot theo DATE/TIME/id giảm dần, xuyên ngày,
+  không lấy tương lai so với ngày alarm; không trượt nhóm phục hồi về lịch sử.
+- Giữ nguyên TEST_COUNT; các quy tắc FAIL liên tục xét độc lập cổng phục hồi.
+- Cập nhật read.md với quy tắc, ví dụ, migration và cách thay file.
+- Thêm 13 kiểm thử mới, cập nhật test alarm theo hành vi phục hồi mới và
+  sửa fixture kiểm thử cũ (log TCP, giá trị PASS/FAIL, trường được phép sửa).
+- Kết quả: 28/28 kiểm thử alarm/recovery đạt; compile cú pháp đạt.
+  GUI chưa chạy do môi trường không có PyQt5.
+
+[2026-09-21] — ALARM LIÊN TIẾP CHỈ XÉT TEST_COUNT = 0
+- services/alarm_builder.py: chỉ đưa TEST_COUNT = 0 vào hai bộ xét fail liên tiếp cùng/khác Scrap Code; bỏ qua retest, giữ nguyên Yield 15/30 và phục hồi 6/10.
+- repositories/alarm_history_repository.py: lọc TEST_COUNT = 0 ở lịch sử legacy; từ chối bằng chứng liên tiếp cũ có TEST_COUNT khác 0 và hướng dẫn import lại ngày alarm.
+- read.md: thêm hướng dẫn thay hai file, tính lại alarm cũ, ví dụ hai ảnh và phạm vi kiểm thử; giữ lịch sử tài liệu cũ.
+- Xác minh: 8 kiểm thử tập trung đều PASS; chưa chạy GUI Windows/database sản xuất.
+
+
+
+[2026-09-21 23:00:54 UTC+7] REPORT — HOÀN THIỆN SOẠN BÁO CÁO
+- Nối ReportBuilder vào ReportPage; bổ sung tab Soạn báo cáo và thêm dòng chọn từ bảng dữ liệu.
+- Thêm cây chọn ngày/EQP/SLOT bằng checkbox; hỗ trợ kéo nguồn vào báo cáo, giữ thứ tự tick SLOT.
+- Giữ sắp xếp cùng cấp, xóa nhóm/dòng, chống trùng và cập nhật số liệu khi thêm lại.
+- Mặc định trọn ngày; thêm nút đặt giờ 00:00:00–23:59:59 và tải lại dữ liệu.
+- Chặn nguồn cũ ngay khi đổi bộ lọc; giữ bản soạn khi tải nguồn mới.
+- Tái sử dụng công thức TEST_COUNT=0, OUT/IN và bộ copy/xuất Excel hiện có.
+- read.md nối thêm hướng dẫn sử dụng/cài đặt, danh sách file, hành vi bản soạn và giới hạn kiểm chứng.
+- Kiểm tra: 10/10 tests Report PASS; xem GUI offscreen và kiểm tra cấu trúc XLSX. Chưa chạy Windows/Excel thực tế.
+
+
+22.09
+# Changelog – lần sửa Daily / Report này
+- Report lấy mọi Test Count cho tổng hợp, chi tiết và danh sách bộ lọc; cập nhật hướng dẫn trên giao diện.
+- Xác nhận Daily đã lấy mọi Test Count trong source được gửi; kiểm tra tổng bằng dữ liệu có retest.
+- Daily chuyển Date trước Machine; đổi Test thành Total Test.
+- Tăng chữ hai bảng Machine / Slot Summary và Daily từ 11px lên 13px; điều chỉnh chiều cao dòng/tiêu đề và độ rộng cột tối thiểu.
+
+23.09Changelog – Machine Slot Yield, phạm vi Search
+Dùng From–To đã bấm Search cho cả Summary, Daily và 10 lần test gần nhất.
+Hiển thị đủ 48 slot/máy, bổ sung dòng Daily bằng 0 cho ngày/slot không có test.
+Chỉ hiện Alarm dựa trên toàn bộ Alarm còn lưu, không lọc ngày Alarm.
+Click dòng ở cả hai bảng mở lịch sử test theo khoảng ngày đã áp dụng, đủ 13 cột như ảnh mẫu.
+Đổi chu kỳ tự cập nhật khi tab hiển thị thành 10 phút.
+Giữ khoảng ngày đã Search cho các lần tự cập nhật; thêm xử lý hủy/chờ tác vụ lịch sử khi đóng.
+Changelog – điều chỉnh giao diện lần này
+Thu hẹp Summary, tăng phần ngang Daily từ khoảng 27% lên 37%.
+Header lọc Daily chuyển sang nền xanh đậm, chữ và mũi tên trắng.
+Popup lọc Daily tự co chiều ngang theo giá trị.
+History của cả hai bảng tự co chiều ngang theo tổng độ rộng 13 cột, trong giới hạn màn hình.
+Bổ sung độ rộng tối thiểu để tiêu đề và giá trị không bị cắt.
+
+
+2026-09-23 — Slot Summary / Excel export
+- Alarm: chỉ xét alarm_date trong From–To; nền đỏ luôn hiển thị.
+- Slot Summary: bỏ dòng Total Test = 0; Daily giữ nguyên.
+- Thêm Export Excel chạy nền: slot summary, Daily, test history.
+- Bổ sung yield 15/30 (hỗ trợ thiếu mẫu), target DB, cờ chuỗi fail và ALARM.
+- Chuỗi fail chỉ xét TEST_COUNT=0, ngưỡng theo cấu hình đã lưu.
+- History đầy đủ trong kỳ; Interface/File trống do DB chưa lưu.
+- Thêm test hồi quy; chi tiết phạm vi và cách dùng trong read.md.
+
+
+[2026-09-23 23:37:17 GMT+7] Alarm Monitor Day 1–3
+- Tự tính/lưu Monitor trước khi tải Alarm trong worker nền.
+- Lấy ba ngày có test đầu tiên sau Date complete theo EQP + Slot, bỏ ngày không chạy.
+- 100% PASS ghi PASS, còn lại FAIL; dùng tất cả lượt test và Model.
+- Không giới hạn ngày test bởi khoảng ngày đang lọc Alarm; không xét quá ngày hiện tại.
+- Tính lại theo log hiện có để phản ánh import bổ sung/ghi đè.
+- Xóa Monitor khi đổi Status; bảo vệ transaction và row_version.
+- Hiển thị PASS xanh, FAIL đỏ trên cột Monitor chỉ đọc.
+- Bổ sung 4 kiểm thử SQLite, đều đạt; lỗi test_alarm cũ đã xác nhận tồn tại ở bản gốc.
+(chưa biết có index chưa)
+
+
+Changelog
+2026-09-24 — Tooltip biểu đồ (nền LI_App_v1.14-master)
+Thêm
+Tooltip cho toàn bộ biểu đồ hiện có qua 5 lớp chart dùng chung.
+Hiển thị ngày/EQP/Slot/Model, Scrap Code, Scrap PPM hoặc Scrap Qty, In, Out/Pass, Fail, Fail PPM tổng và Yield tùy dữ liệu biểu đồ.
+Hỗ trợ điểm Yield, phần cột chồng và chân cột Fail bằng 0.
+Hiển thị N/A cho số liệu chưa xác định; escape ký tự HTML trong nhãn.
+Xử lý tương tác
+Dò vị trí theo tọa độ màn hình, hỗ trợ cột ở trục trái khi trục Yield bên phải nằm phía trên (twinx).
+Dung sai cho điểm sát biên và màn hình có tỷ lệ DPI cao.
+Xóa đăng ký dữ liệu cũ trước mỗi lần cập nhật hoặc trạng thái rỗng; đăng ký lại đường Yield khi chỉ thay đổi lựa chọn mã lỗi trên dữ liệu cache.
+Chỉ kết nối sự kiện một lần trên mỗi canvas; tự ẩn tooltip khi rời biểu đồ, ẩn widget hoặc bấm chuột.
+Tooltip dùng Qt nên không trở thành đối tượng trong ảnh biểu đồ khi copy/export.
+Phạm vi
+Thêm chart_hover.py và cập nhật 5 file chart. Giữ logic tổng hợp dữ liệu, database, bộ lọc và công thức Yield hiện có.
+Không thêm phụ thuộc ngoài các thư viện app đang sử dụng.
+Xác minh
+Kiểm tra cú pháp đạt.
+Kiểm tra hình học bằng Matplotlib Agg đạt cho 5 lớp chart, stacked/twinx, Yield, cột 0, cache refresh và empty state.
+Chưa xác minh cửa sổ tooltip Qt thực trên Windows; xem read.md.
+
+Changelog – Dashboard Charts Update
+File thay đổi
+ui/pages/dashboard_page.py: giảm chiều cao 10 ô tổng từ 92 xuống 64 px; thu gọn bảng còn khoảng 1/4 chiều rộng; dùng tiêu đề trung tính; chỉ giữ nền xanh ở giá trị hai cột Đã hoàn thành và Action Effectiveness; bố trí 3 vùng biểu đồ theo tỷ lệ 30/15/30; dùng chung dữ liệu tổng hợp ngày và trạng thái.
+ui/charts/dashboard_bar_chart.py (mới): biểu đồ cột xanh cho alarm/ngày, trạng thái action và effectiveness/ngày; trục số nguyên cho alarm, phần trăm 0–100 cho effectiveness; khung và lưới theo phong cách Summary; nhãn, tooltip, copy biểu đồ, cuộn ngang khi nhiều ngày.
+Hành vi dữ liệu
+Biểu đồ trạng thái có thứ tự Đã hoàn thành → Đang tiến hành → Chưa tiến hành.
+Mọi biểu đồ dùng dữ liệu trong khoảng ngày được chọn, đồng bộ với bảng và 10 ô tổng.
+Giữ ngày không có alarm với giá trị 0; xử lý mẫu số 0.
+Giữ nguyên công thức tỷ lệ tổng, bộ lọc Alarm, database và logic tạo alarm.
+Tài liệu: read.md hướng dẫn cài đặt, bố cục, công thức và phạm vi kiểm tra.
+
+
+CHANGELOG
+Bỏ refresh_monitors khỏi AlarmWorker khi Search/chuyển tab.
+Thêm sync_import_monitors sử dụng connection và transaction import hiện có.
+PrimeRepository thu thập EQP/Slot/ngày quá khứ trước và sau thay log; tính và lưu Monitor trước commit.
+Chặn dữ liệu Today khỏi phép tính Monitor; import chỉ có ngày hôm nay bỏ qua xử lý Monitor.
+Khôi phục PrimeController về luồng đọc thông thường, bỏ thông báo trì hoãn Monitor của patch trước.
+Thêm kiểm thử luồng import, re-import, read-only và rollback.
+
+
+2026-09-25 — LI v1.15: khóa database, snapshot nguồn, log chẩn đoán
+
+- Chờ khóa import, heartbeat/release và schema 60 giây theo Aging.
+- Heartbeat 60 giây; join tối đa 5 giây; chặn replace khi heartbeat chưa dừng.
+- Ghi nhận chủ phiên import đang hoạt động; giữ nguyên bảo vệ batch, lease và commit nguyên tử.
+- Ngừng kiểm tra lại mtime/kích thước/danh sách log sau khi đọc.
+- Đọc snapshot giới hạn số byte; phần ghi thêm/dòng cuối chưa xuống dòng để lần sau.
+- Đóng transaction đọc Machine Slot trước khi dựng kết quả.
+- Gom truy vấn chi tiết mail, nhả kết nối trước khi nhóm/lọc kết quả.
+- Export Machine Slot dùng snapshot SQLite cục bộ trước khi tạo Excel.
+- Log DB riêng theo PID/run: connect/SQL/commit/rollback/close, timing, caller, SQLite error code.
+- Log giai đoạn import/mail, batch, đọc file; PID trong log tổng.
+- Auto jobs có stack dump định kỳ 120 giây và mốc yêu cầu thoát/kết thúc Python.
+- Instrument kết nối Report ở chế độ chỉ đọc.
+- Thêm test hồi quy; cập nhật test nguồn thay đổi theo yêu cầu mới.
+- Không đổi schema hoặc tiêu chuẩn Alarm/TIER/Monitor; không yêu cầu tạo lại database.
+
+CHANGELOG — 2026-09-30
+Chỉ ghi thay đổi của bản vá này.
+
+[UI]
+- Thêm No cho bảng lịch sử Alarm và hai lối mở lịch sử Machine Slot Yield (Summary/Daily).
+- Thêm Fail comment giữa Yield và Lần 1, tooltip đầy đủ, và nội dung trong dialog lịch sử.
+- Lấy comment từ alarm đã lưu trong khoảng ngày chọn; Daily lấy đúng ngày của dòng được bấm.
+- Thu hẹp vùng/cột Daily; giữ 10 cột kết quả gần nhất đúng thứ tự.
+- From mặc định lùi 14 ngày so với To là hôm nay.
+
+[ALARM]
+- Đổi kiểm tra phục hồi Yield 15 từ 6 sang 8 test.
+- Đổi kiểm tra phục hồi Yield 30 từ 10 sang 8 test.
+- Giữ nguyên các điều kiện còn lại và quy tắc fail liên tiếp theo Scrapcode.
+
+[EXPORT]
+- Bổ sung Fail comment vào sheet slot summary; điều chỉnh vị trí định dạng phần trăm do dịch cột.
+
+[PHẠM VI]
+- Không sửa schema, khóa/transaction, scheduler, theo dõi trạng thái hoặc các tab khác.
+- Alarm cũ cần import lại ngày liên quan để tính theo quy tắc mới.
+
+
+CHANGELOG — 2026-09-30 — Tab Cache / Incremental Machine Slot Yield
+Chỉ ghi nội dung của lần sửa này.
+
+[FIX]
+- Không truy vấn lại Alarm/Dashboard khi chỉ chuyển tab với cùng From–To; chia sẻ kết quả Alarm đã tải.
+- Không refresh Machine Slot Yield khi quay lại cùng khoảng ngày đã tải.
+- Đọc From–To hiện tại khi mở Machine Slot Yield để nhận bộ lọc mới từ tab khác.
+- Đánh dấu dữ liệu hết hiệu lực sau import PRIME, kể cả khi Machine Slot Yield đang ẩn.
+
+[PERFORMANCE]
+- Cache thống kê theo ngày trong phiên mở app.
+- Dùng metadata import để đọc lại ngày mới/thay đổi; ghép với ngày cũ không đổi.
+- Đọc lại nguyên ngày bị thay thế để phản ánh đúng reimport, số test giảm và slot bị loại.
+- Giữ nguyên tổng, thứ tự Daily và 10 kết quả gần nhất; đọc lại Fail comment.
+
+[UI]
+- Dùng loading sẵn có khi Search ở Machine Slot Yield.
+- Refresh 10 phút vẫn chạy nền khi tab hiển thị.
+- Dọn loading khi thành công/lỗi/đóng; gộp các yêu cầu mới trong khi worker chạy.
+
+[PHẠM VI]
+- 4 file source thay đổi; không đổi quy tắc alarm, schema hoặc luồng ghi/khóa database.
+- Cache RAM được xóa khi đóng app; Search chủ động vẫn kiểm tra dữ liệu mới.
+
+
+
+CHANGELOG — 2026-09-30 — Recent 3-day Alarm Filter
+
+- Checkbox “Chỉ hiện Alarm” ở Machine Slot Yield chỉ giữ slot đã có alarm trong From–To và còn đạt quy tắc khi xét hôm nay + 2 ngày trước.
+- Giữ nền đỏ cho các slot đạt; bỏ tích trở lại cách hiển thị cũ.
+- Tái sử dụng quy tắc Yield 15/30, phục hồi 8 PASS và chuỗi Scrapcode theo cấu hình/TEST_COUNT hiện tại.
+- Giới hạn toàn bộ test tham gia trong 3 ngày, không bù bằng lịch sử trước đó.
+- Thêm kiểm tra worker/loading khi tích, cache kết quả theo metadata import/config/ngày, làm mới khi cửa sổ ngày thay đổi.
+- Hiển thị khoảng ngày đang xét alarm trên dòng trạng thái và thêm tooltip checkbox.
+- Bộ tính alarm khi import vẫn dùng chế độ một ngày mặc định; không sửa dữ liệu alarm lưu sẵn.
+
+[2026-10-01] LI v1.16 — GUI tự chờ và phục hồi khi database bị khóa
+
+- Khi khởi động/đọc bộ lọc/Search gặp SQLITE_BUSY hoặc SQLITE_LOCKED, hiển thị “Database đang cập nhật, vui lòng thử lại sau 2 phút”.
+- Dialog không chặn vòng lặp giao diện, có thể đóng; đóng dialog không hủy tác vụ chờ. Chỉ hiện một lần cho một đợt chờ.
+- Worker tự thử lại cùng yêu cầu sau mỗi 5 giây; timeout chờ khóa riêng cho luồng đọc GUI là 1 giây. Không áp dụng timeout này cho auto import.
+- Tạm khóa bộ lọc/Search và điều khiển liên quan; khi truy vấn thành công tự đóng dialog còn mở, tải kết quả và khôi phục điều khiển.
+- Giữ dữ liệu cũ ở các bảng chính/Tra cứu SLOT trong thời gian khóa, chỉ cập nhật tiêu đề kết quả chính khi có dữ liệu mới.
+- Bổ sung phục hồi cho các worker Summary, Yield Slot, Alarm/Dashboard, Machine Slot Yield và Report; đọc cấu hình Machine Slot Yield bị khóa chuyển sang nền.
+- Đóng app hủy vòng chờ an toàn; lỗi khác vẫn báo như trước; không tự retry thao tác ghi/lưu Alarm.
+- Không chặn truy vấn chỉ vì import đang đọc file/staging; không thay schema, logic Alarm/TIER/Monitor, transaction, parser hay lịch import.
+- Thêm 15 kiểm thử phục hồi; chi tiết phạm vi, cài đặt và kết quả kiểm thử ở read.md.

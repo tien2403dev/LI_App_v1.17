@@ -1,0 +1,61 @@
+2026-09-15 11:22:05 | INFO | Bắt đầu Auto Import PRIME | Ngày: 20260911 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 11:22:08 | SUCCESS | Ngày: 20260911 | Inserted: 10854 | Deleted: 10854 | TIER đã được xử lý theo PrimeImportService hiện tại.
+2026-09-15 11:22:44 | INFO | Bắt đầu Auto Import PRIME | Ngày: 20260914 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 11:22:44 | ERROR | Không tìm thấy file .txt trong các folder ngày được chọn
+2026-09-15 11:22:44 | TRACEBACK | Traceback (most recent call last):
+  File "D:\Python Project\LIApp\auto_import_main.py", line 260, in main
+    return run_auto_import(
+        database_path=(
+            arguments.database
+        )
+    )
+  File "D:\Python Project\LIApp\auto_import_main.py", line 224, in run_auto_import
+    result = service.import_folder(
+        root_folder=log_folder,
+        business_dates=(target_date,),
+    )
+  File "D:\Python Project\LIApp\services\prime_import_service.py", line 42, in import_folder
+    file_count = self.reader.stage_folder(root_folder, dates, stage, notify, cancel)
+  File "D:\Python Project\LIApp\services\prime_log_reader.py", line 190, in stage_folder
+    raise ValidationError("Không tìm thấy file .txt trong các folder ngày được chọn")
+domain.prime.ValidationError: Không tìm thấy file .txt trong các folder ngày được chọn
+2026-09-15 12:42:45 | INFO | Bắt đầu Auto Import PRIME | Ngày: 20260914 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 12:42:45 | ERROR | Không tìm thấy file .txt trong các folder ngày được chọn
+2026-09-15 12:42:45 | TRACEBACK | Traceback (most recent call last):
+  File "D:\Python Project\LIApp\auto_import_main.py", line 260, in main
+    return run_auto_import(
+        database_path=(
+            arguments.database
+        )
+    )
+  File "D:\Python Project\LIApp\auto_import_main.py", line 224, in run_auto_import
+    result = service.import_folder(
+        root_folder=log_folder,
+        business_dates=(target_date,),
+    )
+  File "D:\Python Project\LIApp\services\prime_import_service.py", line 42, in import_folder
+    file_count = self.reader.stage_folder(root_folder, dates, stage, notify, cancel)
+  File "D:\Python Project\LIApp\services\prime_log_reader.py", line 190, in stage_folder
+    raise ValidationError("Không tìm thấy file .txt trong các folder ngày được chọn")
+domain.prime.ValidationError: Không tìm thấy file .txt trong các folder ngày được chọn
+2026-09-15 12:53:52 | INFO | Bắt đầu Auto Import PRIME | Ngày: 20260914 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 12:53:52 | SKIPPED | Không có file PRIME của ngày 20260914; bỏ qua và sẽ kiểm tra lại ở lần chạy sau.
+2026-09-15 12:54:25 | INFO | Bắt đầu Auto Import PRIME | Ngày: 20260912 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 12:54:25 | SKIPPED | Không có file PRIME của ngày 20260912; bỏ qua và sẽ kiểm tra lại ở lần chạy sau.
+2026-09-15 12:55:48 | SKIPPED | Ngày 20260911 đã được Auto Import thành công.
+2026-09-15 12:58:59 | INFO | Bắt đầu Auto Import PRIME | Ngày: 20260914 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 12:58:59 | SKIPPED | Không có file PRIME của ngày 20260914; bỏ qua và sẽ kiểm tra lại ở lần chạy sau.
+2026-09-15 13:01:04 | SKIPPED | Auto Import đang tắt.
+2026-09-15 13:01:31 | INFO | Bắt đầu Auto Import PRIME | Ngày: 20260910 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 13:01:32 | SUCCESS | Ngày: 20260910 | Inserted: 5512 | Deleted: 5512 | TIER đã được xử lý theo PrimeImportService hiện tại.
+2026-09-15 13:01:46 | SKIPPED | Ngày 20260910 đã được Auto Import thành công.
+2026-09-15 13:06:48 | SKIPPED | Auto Import đang tắt.
+2026-09-15 13:07:01 | INFO | Bắt đầu Auto Import PRIME | Ngày: 20260910 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 13:07:02 | SUCCESS | Ngày: 20260910 | Inserted: 5512 | Deleted: 5512 | TIER đã được xử lý theo PrimeImportService hiện tại.
+2026-09-15 13:08:45 | SKIPPED | Ngày 20260910 đã được Auto Import thành công.
+2026-09-15 13:17:39 | INFO | Bắt đầu Auto Import PRIME TODAY | Ngày: 20260915 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 13:17:40 | SKIPPED | Chưa có file PRIME của ngày 20260915; bỏ qua và sẽ kiểm tra lại ở lần chạy sau.
+2026-09-15 13:19:44 | INFO | Bắt đầu Auto Import PRIME TODAY | Ngày: 20260915 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 13:19:44 | SUCCESS | Auto Import PRIME TODAY hoàn tất | Ngày: 20260915 | Inserted: 4 | Deleted: 0 | TIER đã được đồng bộ.
+2026-09-15 13:20:00 | INFO | Bắt đầu Auto Import PRIME TODAY | Ngày: 20260915 | Folder: C:\HANSSAK\SecureGate\Download\14.09(1)\13.09(1)\LOG HANDLER LI
+2026-09-15 13:20:00 | SUCCESS | Auto Import PRIME TODAY hoàn tất | Ngày: 20260915 | Inserted: 4 | Deleted: 4 | TIER đã được đồng bộ.
